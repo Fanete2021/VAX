@@ -7,7 +7,6 @@ const VAXChart = ({data}) => {
             <LineChart
                 width={435}
                 height={292}
-                data={data}
                 margin={{ bottom: 20, right: 20, top: 20 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
@@ -22,7 +21,7 @@ const VAXChart = ({data}) => {
                     domain={[-100, 100]}
                 />
                 <Tooltip />
-                <Line type="monotone" dataKey="current" stroke="#8884d8" activeDot={{ r: 8 }} />
+                <Line dot={false} type="monotone" dataKey="current" data={data} stroke="#8884d8" activeDot={{ r: 8 }} />
             </LineChart>
         </div>
     );

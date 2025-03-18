@@ -1,11 +1,60 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import VAXChart from "../../ui/VAXChart/VAXChart.jsx";
+import dataGraphs from "./dataGraph.json";
+import dataFields from './dataFields.json';
 
-const data = [
+const maxTime = 804;
 
-];
+const CurrentVoltageCharacteristic = ({isStart, isCalibration, isPauseExperement}) => {
+    const [currentTime, setCurrentTime] = useState(0);
+    const [currentData1, setCurrentData1] = useState([]);
+    const [currentData2, setCurrentData2] = useState([]);
 
-const CurrentVoltageCharacteristic = ({isStart, isCalibration}) => {
+    useEffect(() => {
+        let interval;
+        if (isStart && !isPauseExperement) {
+            interval = setInterval(() => {
+                setCurrentTime((prevTime) => {
+                    if (prevTime < maxTime / 2) {
+                        setCurrentData1(prev => [
+                            ...prev,
+                            {
+                                voltage: dataGraphs.data[prevTime].x,
+                                current: dataGraphs.data[prevTime].y,
+                            }
+                        ]);
+                    } else {
+                        setCurrentData2(prev => [
+                            ...prev,
+                            {
+                                voltage: dataGraphs.data[prevTime].x,
+                                current: dataGraphs.data[prevTime].y,
+                            }
+                        ]);
+                    }
+
+                    const newTime = prevTime + 1;
+                    if (newTime >= maxTime) {
+                        setCurrentData1([]);
+                        setCurrentData2([]);
+                        return 0;
+                    }
+                    return newTime;
+                });
+            }, 1000);
+        }
+
+        return () => clearInterval(interval);
+    }, [isStart, isPauseExperement]);
+
+    useEffect(() => {
+        if (!isStart) {
+            setCurrentTime(0);
+        }
+        setCurrentData1([]);
+        setCurrentData2([]);
+    }, [isStart]);
+
     return (
         <div className="CurrentVoltageCharacteristic">
             <div className="columnCard">
@@ -21,7 +70,7 @@ const CurrentVoltageCharacteristic = ({isStart, isCalibration}) => {
                             </div>
 
                             <div className="textField">
-                                {isStart ? 50.52 : isCalibration ? "-" : "0"}
+                                {isStart ? `${dataFields.fields[currentTime].I || 0}` : isCalibration ? "-" : "0"}
                             </div>
                         </div>
 
@@ -31,7 +80,11 @@ const CurrentVoltageCharacteristic = ({isStart, isCalibration}) => {
                             </div>
 
                             <div className="textField">
-                                {isStart ? 8.5 : isCalibration ? "-" : "0"}
+                                {isStart
+                                    ? `${parseFloat(dataFields.fields[currentTime].U || 0).toFixed(2)}`
+                                    : isCalibration
+                                        ? "-"
+                                        : "0.00"}
                             </div>
                         </div>
 
@@ -41,7 +94,11 @@ const CurrentVoltageCharacteristic = ({isStart, isCalibration}) => {
                             </div>
 
                             <div className="textField">
-                                {isStart ? 47 : isCalibration ? "-" : "0"}
+                                {isStart
+                                    ? `${parseFloat(dataFields.fields[currentTime].temperature || 0).toFixed(2)}°`
+                                    : isCalibration
+                                        ? "-"
+                                        : "0.00"}
                             </div>
                         </div>
                     </div>
@@ -49,7 +106,7 @@ const CurrentVoltageCharacteristic = ({isStart, isCalibration}) => {
                     <div style={{ textAlign: 'center', margin: '9px 11px 2px 0' }}>
                         {isCalibration
                             ? <div className={"empty"}>-</div>
-                            : <VAXChart data={data}/>
+                            : <VAXChart data={currentTime < maxTime / 2 ? currentData1 : currentData2} />
                         }
                     </div>
                 </div>

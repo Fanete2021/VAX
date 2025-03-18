@@ -1,12 +1,20 @@
 import React from 'react';
 
+const calculatePercentage = (max, min, value) => {
+    const range = max - min;
+
+    const percentage = ((value - min) / range);
+
+    return Math.min(Math.max(percentage, 0), 1);
+};
+
 const Thermometer = ({ steps, value, height = 200, orientation = 'vertical' }) => {
     const thermometerWidth = 23;
 
     const maxValue = Math.max(...steps);
-    const clampedValue = Math.min(value, maxValue);
+    const clampedValue = calculatePercentage(steps[steps.length - 1], steps[0], value);
 
-    const fillHeight = (clampedValue / maxValue) * height;
+    const fillHeight = clampedValue * height;
 
     const isHorizontal = orientation === 'horizontal';
 
@@ -44,7 +52,7 @@ const Thermometer = ({ steps, value, height = 200, orientation = 'vertical' }) =
         return path;
     };
 
-    const isFull = clampedValue >= maxValue;
+    const isFull = clampedValue === 1;
 
     return (
         <div style={{ textAlign: 'center' }}>
@@ -74,7 +82,9 @@ const Thermometer = ({ steps, value, height = 200, orientation = 'vertical' }) =
                             isHorizontal ? thermometerWidth : fillHeight,
                             10,
                             isHorizontal
-                                ? ['top-left', 'bottom-left']
+                                ? isFull
+                                    ? ['bottom-right', 'bottom-left', 'top-left', 'top-right']
+                                    : ['top-left', 'bottom-left']
                                 : isFull
                                     ? ['bottom-left', 'bottom-right', 'top-left', 'top-right']
                                     : ['bottom-left', 'bottom-right']

@@ -15,8 +15,7 @@ const Electrolyte = ({isStart, isCalibration, isPauseExperement}) => {
                 setCurrentTime((prevTime) => {
                     const newTime = prevTime + 1;
                     if (newTime >= maxTime) {
-                        clearInterval(interval);
-                        return prevTime;
+                        return 0;
                     }
                     return newTime;
                 });

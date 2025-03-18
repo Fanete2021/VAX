@@ -79,7 +79,7 @@ button {
   width: fit-content;
 
   .currentValue {
-    padding: 0 28px 0 29px;
+    padding: 0 14px 0 14px;
   }
 
   .unit {
@@ -157,7 +157,7 @@ button {
 
 .textField {
   border: 1px solid black;
-  width: 55px;
+  width: 65px;
   height: 37px;
   box-shadow: 0px 4px 4px 0px #00000040 inset;
   display: flex;
@@ -167,6 +167,7 @@ button {
 }
 
 .actionBtn {
+  position: relative;
   margin-top: 9px;
   background: #4F81BD;
   width: 100%;

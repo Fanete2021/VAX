@@ -58,7 +58,7 @@ const Turbidimeter = ({isStart, isCalibration, isPauseExperement}) => {
             <div className="thermometerWrapper">
                 <div className="currentValue">
                     <div className="description">
-                        Температура на ареометре:
+                        Температура на мутнометре:
                     </div>
 
                     <div className="textField">
