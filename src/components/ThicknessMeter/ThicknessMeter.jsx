@@ -19,7 +19,7 @@ const ThicknessMeter = ({isStart, isCalibration, isPauseExperement}) => {
                     }
                     return newTime;
                 });
-            }, 1000);
+            }, 60000);
         }
 
         return () => clearInterval(interval);

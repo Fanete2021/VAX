@@ -78,29 +78,29 @@ function App() {
                             <div className="analytics">V.1.2</div>
                         </div>
 
-                        <div className="experementActions">
-                            <div className="descriptionExperement">
-                                Добавить/изменить описание эксперимента
-                            </div>
+                        {/*<div className="experementActions">*/}
+                        {/*    <div className="descriptionExperement">*/}
+                        {/*        Добавить/изменить описание эксперимента*/}
+                        {/*    </div>*/}
 
-                            <svg
-                                width="19"
-                                height="18"
-                                viewBox="0 0 19 18"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M3.61542 4.71429H15.3847V3.85714H3.61542V4.71429Z" fill="black" />
-                                <path d="M3.61542 9H15.3847V8.14286H3.61542V9Z" fill="black" />
-                                <path d="M3.61542 13.2857H15.3847V12.4286H3.61542V13.2857Z" fill="black" />
-                                <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M0.846191 18V0H18.1539V18H0.846191ZM1.5385 0.857143H17.4616V17.1429H1.5385V0.857143Z"
-                                    fill="black"
-                                />
-                            </svg>
-                        </div>
+                        {/*    <svg*/}
+                        {/*        width="19"*/}
+                        {/*        height="18"*/}
+                        {/*        viewBox="0 0 19 18"*/}
+                        {/*        fill="none"*/}
+                        {/*        xmlns="http://www.w3.org/2000/svg"*/}
+                        {/*    >*/}
+                        {/*        <path d="M3.61542 4.71429H15.3847V3.85714H3.61542V4.71429Z" fill="black" />*/}
+                        {/*        <path d="M3.61542 9H15.3847V8.14286H3.61542V9Z" fill="black" />*/}
+                        {/*        <path d="M3.61542 13.2857H15.3847V12.4286H3.61542V13.2857Z" fill="black" />*/}
+                        {/*        <path*/}
+                        {/*            fillRule="evenodd"*/}
+                        {/*            clipRule="evenodd"*/}
+                        {/*            d="M0.846191 18V0H18.1539V18H0.846191ZM1.5385 0.857143H17.4616V17.1429H1.5385V0.857143Z"*/}
+                        {/*            fill="black"*/}
+                        {/*        />*/}
+                        {/*    </svg>*/}
+                        {/*</div>*/}
                     </div>
 
                     <CurrentVoltageCharacteristic isStart={isStart} isCalibration={isCalibration} isPauseExperement={isPauseExperement}/>

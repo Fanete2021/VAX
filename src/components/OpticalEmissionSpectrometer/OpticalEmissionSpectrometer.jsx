@@ -3,7 +3,7 @@ import SpectrumChart from "../../ui/SpectrumChart/SpectrumChart.jsx";
 import dataGraph from './dataGraph.json';
 import dataFields from './dataFields.json';
 
-const maxTime1 = 74;
+const maxTime1 = 13;
 const maxTime2 = 99;
 
 const OpticalEmissionSpectrometer = ({isStart, isCalibration, isPauseExperement}) => {
