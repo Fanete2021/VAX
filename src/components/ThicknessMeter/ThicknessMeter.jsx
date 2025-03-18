@@ -43,7 +43,8 @@ const ThicknessMeter = ({isStart, isCalibration, isPauseExperement}) => {
                 </div>
 
                 <div className="textField">
-                    {isStart ? `${currentData.thicknessGrowth[currentTime].value || 0}` : isCalibration ? "-" : "0"}
+                    {/*{isStart ? `${currentData.thicknessGrowth[currentTime].value || 0}` : isCalibration ? "-" : "0"}*/}
+                    -
                 </div>
             </div>
         </div>
