@@ -51,7 +51,7 @@ const Turbidimeter = ({isStart, isCalibration, isPauseExperement}) => {
 
             <CircleProgress
                 percentage={isStart ? calculatePercentage(currentData.turbidity[currentTime].value) : 0}
-                title={isStart ? `${currentData.turbidity[currentTime].value || 0} SG` : isCalibration ? "-" : "0"}
+                title={isStart ? `${currentData.turbidity[currentTime].value || 0} NTU` : isCalibration ? "-" : "0"}
                 steps={[0, 500, 1000, 1500]}
             />
 
