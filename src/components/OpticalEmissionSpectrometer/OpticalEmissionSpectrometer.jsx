@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import SpectrumChart from "../../ui/SpectrumChart/SpectrumChart.jsx";
 import dataGraph from './dataGraph.json';
 import dataFields from './dataFields.json';
+import {timerTime} from "../../constant/timerTime.js";
 
 const maxTime1 = 13;
 const maxTime2 = 99;
@@ -21,7 +22,7 @@ const OpticalEmissionSpectrometer = ({isStart, isCalibration, isPauseExperement}
                     }
                     return newTime;
                 });
-            }, 2000);
+            }, timerTime);
         }
 
         let interval2;
@@ -35,7 +36,7 @@ const OpticalEmissionSpectrometer = ({isStart, isCalibration, isPauseExperement}
                     }
                     return newTime;
                 });
-            }, 10000);
+            }, timerTime);
         }
 
         return () => {

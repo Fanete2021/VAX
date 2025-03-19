@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import CircleProgress from "../../ui/CircleProgress/CircleProgress.jsx";
 import Thermometer from "../../ui/Thermometer/Thermometer.jsx";
 import turbidimeterData from './data.json';
+import {timerTime} from "../../constant/timerTime.js";
 
 const maxCircleProgress = 2000;
 const minCircleProgress = 0;
@@ -31,7 +32,7 @@ const Turbidimeter = ({isStart, isCalibration, isPauseExperement}) => {
                     }
                     return newTime;
                 });
-            }, 1000);
+            }, timerTime);
         }
 
         return () => clearInterval(interval);

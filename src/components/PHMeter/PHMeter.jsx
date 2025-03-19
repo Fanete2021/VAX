@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Thermometer from "../../ui/Thermometer/Thermometer.jsx";
 import PHMeterData from './data.json';
+import {timerTime} from "../../constant/timerTime.js";
 
 const maxTime = 100;
 
@@ -19,7 +20,7 @@ const PHMeter = ({isStart, isCalibration, isPauseExperement}) => {
                     }
                     return newTime;
                 });
-            }, 1000);
+            }, timerTime);
         }
 
         return () => clearInterval(interval);

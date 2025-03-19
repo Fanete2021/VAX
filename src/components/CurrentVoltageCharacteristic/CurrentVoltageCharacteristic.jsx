@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import VAXChart from "../../ui/VAXChart/VAXChart.jsx";
 import dataGraphs from "./dataGraph.json";
 import dataFields from './dataFields.json';
+import {timerTime} from "../../constant/timerTime.js";
 
 const maxTime = 804;
 
@@ -41,7 +42,7 @@ const CurrentVoltageCharacteristic = ({isStart, isCalibration, isPauseExperement
                     }
                     return newTime;
                 });
-            }, 1000);
+            }, timerTime);
         }
 
         return () => clearInterval(interval);

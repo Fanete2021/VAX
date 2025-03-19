@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import thicknessMeterData from "./data.json";
+import {timerTime} from "../../constant/timerTime.js";
 
 const maxTime = 100;
 
@@ -19,7 +20,7 @@ const ThicknessMeter = ({isStart, isCalibration, isPauseExperement}) => {
                     }
                     return newTime;
                 });
-            }, 60000);
+            }, timerTime);
         }
 
         return () => clearInterval(interval);

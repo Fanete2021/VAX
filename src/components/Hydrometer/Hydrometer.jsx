@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CircleProgress from "../../ui/CircleProgress/CircleProgress.jsx";
 import Thermometer from "../../ui/Thermometer/Thermometer.jsx";
 import hydrometerData from './data.json';
+import {timerTime} from "../../constant/timerTime.js";
 
 const maxCircleProgress = 1.11;
 const minCircleProgress = 0.95;
@@ -30,7 +31,7 @@ const Hydrometer = ({ isStart, isCalibration, isPauseExperement }) => {
                     }
                     return newTime;
                 });
-            }, 1000);
+            }, timerTime);
         }
 
         return () => clearInterval(interval);
