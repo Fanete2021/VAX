@@ -63,7 +63,7 @@ const OpticalEmissionSpectrometer = ({isStart, isCalibration, isPauseExperement}
                     <div className="values">
                         <div className="currentValue">
                             <div className="description">
-                                Интенсивность спектральных линий, у.е.
+                                подынтегральная интенсивность спектральных линий
                             </div>
                         </div>
 
